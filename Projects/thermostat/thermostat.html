@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+        "HTMLFiles/xhtml-math11-f.dtd">
+<!-- Created with the Wolfram Language : www.wolfram.com -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>
+  src/thermostat
+ </title>
+ <link href="HTMLFiles/thermostat.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<p class="Title">
+ Remote thermostat with Raspberry
+</p>
+<p class="Section">
+ The wall thermostat
+</p>
+<p class="Text">
+ The wall thermostat is bpt_th345. The body can be pulled out from the case in order to replace batteries and gain access to other setpu buttons. 
+</p>
+<p class="Input">
+ <img src="HTMLFiles/thermostat_1.gif" alt="thermostat_1.gif" width="702" height="752" style="vertical-align:middle" />
+</p>
+<p class="Text">
+ The case contains a mechanical relay. The body is connected to the case by a three wire connector. The relay is driven by 3V/100mA short pulses. The three wire are: common, switch on and switch off. The relay winings have a 30&Omega; impedance.
+</p>
+<p class="Text">
+ The reliability of the system is guaranteed by two tricks. First, If the body is extracted from the case, it senses the missing load. Once reconnected it gives another pulse to be shure that the relay status matches the controller. Second, when the battery is low an off pulse shuts off the boiler.
+</p>
+<p class="Section">
+ Raspberry together with wall thermostat
+</p>
+<p class="Text">
+ The idea is to drive the relay directly by two output of the raspberry, but 100mA are too much for one GPIO. The 330&Omega; resistor limit the current to 10mA. The 100uF capacitor provide enough current to drive the relay.
+</p>
+<p class="Text">
+ The wall thermostat con be left connected together with the raspberry as an additional safety. Whlie away, the wall thermostat con be put in manual mode with a lower setpoint. In case of a failure of the raspberry the lower setpoit is kept by the wall thermostat.<br />The problem is if the raspberry stops working while the relay is closed. The raspberry is capable of sending an email in case the temperature rise over an up threshold or falls down below a down threshold.
+</p>
+<p class="Input">
+ <img src="HTMLFiles/thermostat_2.gif" alt="thermostat_2.gif" width="952" height="714" style="vertical-align:middle" />
+</p>
+<p class="Text">
+ The two schottky diodes protect the wall thermostat from the raspberry pulses.
+</p>
+<p class="Section">
+ Software for temperature recording
+</p>
+<p class="Text">
+ Temperature and umidity are measured by a DHT11 sensor. The following python script reads the values from the sensor.
+</p>
+<p class="Text">
+ DHT11_Python/dht11_example.py:
+</p>
+<p class="Text">
+ import RPi.GPIO as GPIO<br />import dht11<br />import time<br />import datetime<br />import sys<br /><br /># initialize GPIO<br />GPIO.setwarnings(False)<br />GPIO.setmode(GPIO.BCM)<br />#GPIO.cleanup()<br /><br /># read data using pin 19<br />instance = dht11.DHT11(pin=19)<br /><br />#powerup the sensor<br />GPIO.setup(13, GPIO.OUT)<br />GPIO.output(13, GPIO.HIGH)<br />time.sleep(1)<br /><br />result = instance.read()<br />if result.is_valid():<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(&quot;Temperature: %d C&quot; % result.temperature)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(&quot;Humidity: %d %%&quot; % result.humidity)<br /><br />while not result.is_valid():<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = instance.read()<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if result.is_valid():<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(&quot;Temperature: %d C&quot; % result.temperature)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(&quot;Humidity: %d %%&quot; % result.humidity)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;except KeyboardInterrupt:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GPIO.output(13, GPIO.LOW)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sys.exit()<br /><br />GPIO.output(13, GPIO.LOW)
+</p>
+<p class="Text">
+ The <span style='font-style: italic;'>Mathematica</span> script DHT11.m is called by a crontab job every 5 minutes:
+</p>
+<p class="Text">
+ */5 * * * * xvfb-run -a -s &quot;-screen 0 640x480x24&quot; wolfram -script DHT11.m &gt; /dev/null 2&gt;&amp;1
+</p>
+<p class="Text">
+ When a value changes, the new record {Timestamp, temperature, umiditty} is appended to DHT11.log in binary format to save space on disk.<br />The same script keep updated a graph (CurrentTemp.png) showing a summary of the last week values.
+</p>
+<p class="Input">
+ <img src="HTMLFiles/thermostat_3.gif" alt="thermostat_3.gif" width="800" height="763" style="vertical-align:middle" />
+</p>
+<p class="Text">
+ Note that the invocation of the script contains a virtual X server in order to make the Export function to work. This because the Export function is implemented by the <span style='font-style: italic;'>Mathematica</span> FrontEnd and it requires an xserver to work.
+</p>
+<p class="Section">
+ Thermostat software
+</p>
+<p class="Text">
+ The software is written in <span style='font-style: italic;'>Mathematica </span>in the same script that records the temperature. 
+</p>
+<p class="Text">
+ The setpoints and all the other parameter that the user can change remotely are stored in a text file.<br />thermostat.dat looks like this:
+</p>
+<p class="Text">
+ data = {<br />WorkingDays -&gt; {Monday, Tuesday, Wednesday, Thursday, Friday}, <br />Away -&gt; False, <br />BackHomeDate -&gt; &quot;6/01/2017&quot;, <br />ManualMode -&gt; False, <br />TurnOff -&gt; False, <br />WorkingDaysSetPoint -&gt; {{&quot;5:00&quot;, &quot;7:00&quot;}, {&quot;16:00&quot;, &quot;23:00&quot;}}, HolidaySetPoint -&gt; {{&quot;6:30&quot;, &quot;23:00&quot;}}, <br />Temperature -&gt; {10, 20}<br />}; 
+</p>
+<p class="Text">
+ The function SetPoint[abstime_] gives the low or high setpoint at the given time taking in account all the parameter.
+</p>
+<p class="Input">
+ <img src="HTMLFiles/thermostat_4.gif" alt="thermostat_4.gif" width="1866" height="92" style="vertical-align:middle" />
+</p>
+<p class="Input">
+ <img src="HTMLFiles/thermostat_5.gif" alt="thermostat_5.gif" width="224" height="15" style="vertical-align:middle" />
+</p>
+<p class="Output">
+ <img src="HTMLFiles/thermostat_6.gif" alt="thermostat_6.gif" width="14" height="15" style="vertical-align:middle" />
+</p>
+<p class="Text">
+ Since the resolution of the sensor is 1&deg;C, 1&deg;C of hysteresis is good choice for me.
+</p>
+<p class="Text">
+ At this point the remote control is done since I connect to raspberry with ssh and I can edit the thermostat.dat in console.<br />A sort of app can be realised with a webpage. PHP is needed to write the file that is stored server side.
+</p>
+<p class="Subsection">
+ Mathematica interface
+</p>
+<p class="Text">
+ To edit the configuration file thermostat.dat, a graphical interface is provided. Thanks to the Dynamic functionality, any change produce an immediate update of the configuration file.
+</p>
+<p class="Input">
+ <img src="HTMLFiles/thermostat_7.gif" alt="thermostat_7.gif" width="1650" height="586" style="vertical-align:middle;" usemap="#map_7" />
+<map name="map_7">
+<area shape="rect" coords="314,168,338,144" title="Dynamic[$CellContext`awd]" nohref="" />
+</map>
+</p>
+<p class="Output">
+ <img src="HTMLFiles/thermostat_8.gif" alt="thermostat_8.gif" width="897" height="253" style="vertical-align:middle;" usemap="#map_8" />
+<map name="map_8">
+<area shape="rect" coords="156,56,180,32" title="Dynamic[$CellContext`awd$$]" nohref="" />
+</map>
+</p>
+<p class="Text">
+ The file is read/written by the <span style='font-style: italic;'>Mathematica</span> Kernel. Since it&rsquo;s possible to launch the kernel remotely through a secure ssh2 tunnel, this is a full working remote interface. But it requires a pc with <span style='font-style: italic;'>Mathematica</span> installed.
+</p>
+<p class="Subsection">
+ Web interface
+</p>
+<p class="Text">
+ A web interface makes the remote control portable.<br />The following page first calls init.php that load the configuration file thermostat.dat. The button save calls the update.php that write the new configuration to the configuration file.
+</p>
+<p class="Input">
+ <img src="HTMLFiles/thermostat_9.gif" alt="thermostat_9.gif" width="972" height="373" style="vertical-align:middle" />
+</p>
+</body>
+</html>
