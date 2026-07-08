@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>ampli4.nb</title>
+  <link href="../../css/common.css" rel="stylesheet" type="text/css">
+</head>
+<body style="background-color: rgb(255, 255, 255);">
+<!-- // *** Barra di navigazione - inizio *** // -->
+<hr align="center" width="100%">
+<center>
+<table class="navbar">
+  <tbody>
+    <tr>
+      <td><a href="../../index.html">HOME</a></td>
+      <td><a href="../../Personal/personal.html">PERSONAL</a></td>
+      <td><a href="../../Projects/projects.html">PROJECTS</a></td>
+      <td>LINKS</td>
+      <td><a href="mailto:eziogale@libero.it">E-MAIL</a></td>
+    </tr>
+  </tbody>
+</table>
+</center>
+<hr align="center" width="100%"><!-- // *** Barra di navigazione - fine *** // -->
+<h1> Amplificatore PAM </h1>
+<h3> Permesse </h3>
+<h3> Introduzione </h3>
+<p> A mio avviso &egrave; da reletivamente pochi anni (con lo sviluppo
+del Mpeg III e la nascita sul mercato di svariati tipi di lettore) che
+la diffusione   di audio in formato digitale ha raggiunto un ampio
+numero di utenti.<br>
+L'idea &egrave; di portare le tecniche dell'elettronica digitale fino
+allo stadio finale di potenza al fine di rendere quest'ultimo il
+pi&ugrave; possibile  semplice ed economico. Eventuali elaborazioni per
+equalizzare il segnale in uscita possono essere realizzate a monte
+dell'amplificatore con le tecniche  dei filtri digitali implementati via
+software. Si progetter&agrave; alora  un hardware minimale per lo stadio
+di potenza, affiancato da un microprocessore   per l'implementazione del
+filtro digitale. </p>
+<h3> Scopi </h3>
+<p> Lo schema in questione si presta a scopi didattici grazie alla sua
+rigorsa suddivisione in blocchi funzionali ed alle innumerevoli
+applicazioni che  pu&ograve; offrire lo sviluppo software.<br>
+Il software pu&ograve; autoequalizzarsi in due modi: in base al segnale
+perlevato dall'uscita e anche da un microfono posto in prossimit&agrave;
+delle casse acustiche.<br>
+L'equalizzazione che sfrutta la retroazione diretta &egrave; in grado
+di correggere la linearit&agrave; e la dinamicit&agrave;
+dell'amplificatore e cos&igrave; facendo ci fornisce automaticamente
+(grazie ad un'analisi di  Fourier) le caratteristiche del segnale PAM.
+Si pu&ograve; ad esempio monitorare  la forma degli impulsi allo scopo
+di comprendere e migliorare le caratteristiche   dello stadio finale e
+dei dispositivi utilizzati (mos, bjt, igbt, ..). Una   ulteriore fase di
+taratura consiste nell'utilizzare la retroazione del microfono   per
+determinare (e correggere) le distorsioni introdotte dagli speaker.<br>
+Una volta note le caratteristiche dinamiche di finale e speaker si
+pu&ograve; procedere a studiare le caratteristiche acustiche
+dell'ambiente. A questo   punto l'hardware e il software forniscono uno
+strumento che si presta alle   applicazioni pi&ugrave; disparate in
+campo acustico (si pensi alla misura   della performance di casse
+acustiche, alla messa a punto di ambienti dalle   caratteristiche
+acustiche desiderate, allo studio di sistemi con pi&ugrave;   diffusori
+e pi&ugrave; microfoni per mettere a punto un antidoto ad un rumore
+indesiderato, etc.) </p>
+<h3> Blocchi funzionali </h3>
+<h4> Schema a blocchi </h4>
+<p> <img src="Images/index_gr_1.gif" border="0"
+ alt="[Graphics:Images/index_gr_1.gif]" hspace="4" width="570"
+ height="273" align="middle"> </p>
+<h4> Generatore di rampa </h4>
+<p> Genera una rampa del tipo <img src="Images/index_gr_2.gif"
+ border="0" alt="[Graphics:Images/index_gr_2.gif]" width="33"
+ height="30" align="middle"> .<br>
+Il segnale StartW &egrave; un impulso che segnala l'inizio di una Word
+(12 bit); quand attivato carica C2 con la tensione Vcc. <br>
+Il clock trifase f0, f1 (f2) si preoccupa di dividere per 2 il valore
+di tensione ai capi di C2. </p>
+<p> <img src="Images/index_gr_3.gif" border="0"
+ alt="[Graphics:Images/index_gr_3.gif]" hspace="4" width="555"
+ height="259" align="middle"> </p>
+<h4> Sommatore con memoria </h4>
+<p> <img src="Images/index_gr_4.gif" border="0"
+ alt="[Graphics:Images/index_gr_4.gif]" hspace="4" width="555"
+ height="259" align="middle"> </p>
+<p> La tensione ai capi della capacit&agrave; C1 &egrave; accresciuta ad
+ ogni bit processato della quantit&agrave; <img
+ src="Images/index_gr_5.gif" border="0"
+ alt="[Graphics:Images/index_gr_5.gif]" width="33" height="30"
+ align="middle"> . Una volta processati tutti i bit di una word, la
+tensione ai  capi della capacit&agrave; sar&agrave; proporzionale al
+valore binario  della  word in questione. Il blocco considerato
+pu&ograve; assumere due stati  logici:  SetToZero e Sum.<br>
+SetToZero &egrave; la configurazione che presenta la fase f0 del clock
+attiva; il mos J1 &egrave; on e la rete &egrave; chiusa in retroazione.
+L'operazionale U2 impone che il nodo Sum sia a 0. Quest'ultima conzione
+&egrave; verificata  anche quando il mos &egrave; off grazie alla carica
+memorizzata nella capacit&agrave;  C2. </p>
+<p> La situazione nella fase f1 &egrave; la seguente:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;il nodo Sum &egrave; a 0, ai capi di C1 la
+tensione &egrave; sempre la stessa (<img src="Images/index_gr_6.gif"
+ border="0" alt="[Graphics:Images/index_gr_6.gif]" width="55"
+ height="39" align="middle"> ).<br>
+Se in questa configurazione il nodo Sum &egrave; connesso ad un
+poetnziale in ingresso <img src="Images/index_gr_7.gif" border="0"
+ alt="[Graphics:Images/index_gr_7.gif]" width="17" height="17"
+ align="middle"> la tensione di C1 sar&agrave; aumentata del valore <img
+ src="Images/index_gr_8.gif" border="0"
+ alt="[Graphics:Images/index_gr_8.gif]" width="17" height="17"
+ align="middle"> .<br>
+Completata la scansione dell'intera word in nodo Sum potr&agrave;
+copiare il suo valore sullo stadio finale dove si trasferir&agrave; allo
+speaker una carica prorzionale a quella di C1. </p>
+<h3> Test con Spice </h3>
+<pre><code><b><img src="Images/index_gr_9.gif" border="0"
+ alt="[Graphics:Images/index_gr_9.gif]" hspace="45" width="248"
+ height="132" align="middle"></b></code></pre>
+<p> <img src="Images/index_gr_10.gif" border="0"
+ alt="[Graphics:Images/index_gr_10.gif]" hspace="4" width="555"
+ height="259" align="middle"> </p>
+<pre><code><b><img src="Images/index_gr_11.gif" border="0"
+ alt="[Graphics:Images/index_gr_11.gif]" hspace="45" width="143"
+ height="77" align="middle"></b></code></pre>
+<pre><samp><img src="Images/index_gr_12.gif" border="0"
+ alt="[Graphics:Images/index_gr_12.gif]" hspace="47" width="799"
+ height="51" align="middle"></samp></pre>
+<pre><code><b><img src="Images/index_gr_13.gif" border="0"
+ alt="[Graphics:Images/index_gr_13.gif]" hspace="45" width="328"
+ height="64" align="middle"></b></code></pre>
+<p> <img src="Images/index_gr_14.gif" border="0"
+ alt="[Graphics:Images/index_gr_14.gif]" hspace="4" width="555"
+ height="259" align="middle"> </p>
+<p> <img src="Images/index_gr_15.gif" border="0"
+ alt="[Graphics:Images/index_gr_15.gif]" hspace="4" width="555"
+ height="259" align="middle"> </p>
+<pre><code><b><img src="Images/index_gr_16.gif" border="0"
+ alt="[Graphics:Images/index_gr_16.gif]" hspace="45" width="304"
+ height="38" align="middle"></b></code></pre>
+<p> <img src="Images/index_gr_17.gif" border="0"
+ alt="[Graphics:Images/index_gr_17.gif]" hspace="4" width="555"
+ height="259" align="middle"> </p>
+<p> <img src="Images/index_gr_18.gif" border="0"
+ alt="[Graphics:Images/index_gr_18.gif]" hspace="4" width="555"
+ height="259" align="middle"> </p>
+<pre><code><b><img src="Images/index_gr_19.gif" border="0"
+ alt="[Graphics:Images/index_gr_19.gif]" hspace="45" width="252"
+ height="18" align="middle"></b></code></pre>
+<pre><samp><img src="Images/index_gr_20.gif" border="0"
+ alt="[Graphics:Images/index_gr_20.gif]" hspace="47" width="880"
+ height="406" align="middle"></samp></pre>
+<pre><code><b><img src="Images/index_gr_21.gif" border="0"
+ alt="[Graphics:Images/index_gr_21.gif]" hspace="45" width="182"
+ height="59" align="middle"></b></code></pre>
+<pre><samp><img src="Images/index_gr_22.gif" border="0"
+ alt="[Graphics:Images/index_gr_22.gif]" hspace="47" width="917"
+ height="483" align="middle"></samp></pre>
+<pre><code><b><img src="Images/index_gr_23.gif" border="0"
+ alt="[Graphics:Images/index_gr_23.gif]" hspace="45" width="442"
+ height="30" align="middle"></b></code></pre>
+<p> <img src="Images/index_gr_24.gif" border="0"
+ alt="[Graphics:Images/index_gr_24.gif]" hspace="4" width="555"
+ height="259" align="middle"> </p>
+<hr> <font face="Helvetica, Arial" size="1">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;October 9, 2003</font> <br>
+<!-- // *** Barra di navigazione - inizio *** // -->
+<hr align="center" width="100%">
+<center>
+<table class="navbar">
+  <tbody>
+    <tr>
+      <td><a href="../../index.html">HOME</a></td>
+      <td><a href="../../Personal/personal.html">PERSONAL</a></td>
+      <td><a href="../../Projects/projects.html">PROJECTS</a></td>
+      <td>LINKS</td>
+      <td><a href="mailto:eziogale@libero.it">E-MAIL</a></td>
+    </tr>
+  </tbody>
+</table>
+</center>
+<hr align="center" width="100%"><!-- // *** Barra di navigazione - fine *** // --> <br>
+</body>
+</html>
