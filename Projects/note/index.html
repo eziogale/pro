@@ -1,0 +1,346 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Note.nb</title>
+  <link href="../../css/common.css" rel="stylesheet" type="text/css">
+</head>
+<body style="background-color: rgb(255, 255, 255);">
+<!-- // *** Barra di navigazione - inizio *** // -->
+<hr align="center" width="100%">
+<center>
+<table class="navbar">
+  <tbody>
+    <tr>
+      <td><a href="../../index.html">HOME</a></td>
+      <td><a href="../../Personal/personal.html">PERSONAL</a></td>
+      <td><a href="../../Projects/projects.html">PROJECTS</a></td>
+      <td>LINKS</td>
+      <td><a href="mailto:eziogale@libero.it">E-MAIL</a></td>
+    </tr>
+  </tbody>
+</table>
+</center>
+<hr align="center" width="100%"><!-- // *** Barra di navigazione - fine *** // -->
+<h1> Note e accordi </h1>
+<p> La lista di sostituzioni "note", converte i numeri da 0 a 12 nelle
+note La Do ... </p>
+<p> La funzione f[n] restituisce la frequenza della nota n. </p>
+<pre><code><b><img src="Images/index_gr_1.gif" border="0"
+ alt="[Graphics:Images/index_gr_1.gif]" hspace="55" width="967"
+ height="56" align="middle"></b></code></pre>
+<p> Segue una tabella delle frequenze.<br>
+Le colonne riportano le note (crescenti verso il basso) e le righe la
+stessa nota ad ottave differenti (crescenti verso destra.) </p>
+<pre><code><b><img src="Images/index_gr_2.gif" border="0"
+ alt="[Graphics:Images/index_gr_2.gif]" hspace="55" width="967"
+ height="42" align="middle"></b></code></pre>
+<pre><samp><img src="Images/index_gr_3.gif" border="0"
+ alt="[Graphics:Images/index_gr_3.gif]" hspace="55" width="967"
+ height="172" align="middle"></samp></pre>
+<p> Le note sono collocate (nelle frequenze) secondo una scala
+logaritmica. </p>
+<p> La sensazione di "bello" &egrave; determinata dal criterio con cui
+si accostano note differenti.<br>
+Questo &egrave; vero sia per il timbro di uno strumento, che per le
+note di un accordo. </p>
+<p> Cerchiamo ora di determinare questi criteri. </p>
+<p> Iniziamo col cercare le note che corrispondono a multipli interi (e
+semiinteri), di una nota fissata.<br>
+Si tratta dell'equazione :&nbsp;&nbsp;&nbsp;&nbsp;<img
+ src="Images/index_gr_4.gif" border="0"
+ alt="[Graphics:Images/index_gr_4.gif]" width="227" height="17"
+ align="middle"> </p>
+<p> La tabella che segue mostra nella riga"a" e seconda colonna, a quante
+note di distanza si pu&ograve; trovare il multiplo "a" della nota di
+riferimento.<br>
+La quarta colonna contiene lo stesso numero modulo 12, e la terza lo
+stesso numero diviso per 12: in questo modo si identifica ottava e nota. </p>
+<p> Nella quinta si trova la nota pi&ugrave; vicina, nella sesta la
+distanza da questa (in termini di posizioni n). </p>
+<p> La sesta colonna contiene <img src="Images/index_gr_5.gif"
+ border="0" alt="[Graphics:Images/index_gr_5.gif]" width="15"
+ height="17" align="middle"> l'errore che si commette a considerare la
+nota <img src="Images/index_gr_6.gif" border="0"
+ alt="[Graphics:Images/index_gr_6.gif]" width="10" height="17"
+ align="middle">(near) pari a (a * <img src="Images/index_gr_7.gif"
+ border="0" alt="[Graphics:Images/index_gr_7.gif]" width="16"
+ height="17" align="middle">). </p>
+<p> All'errore <img src="Images/index_gr_8.gif" border="0"
+ alt="[Graphics:Images/index_gr_8.gif]" width="15" height="17"
+ align="middle"> &egrave; preferibile sostituire il corrispondente
+scostamento in frequenza <img src="Images/index_gr_9.gif" border="0"
+ alt="[Graphics:Images/index_gr_9.gif]" width="16" height="19"
+ align="middle">. </p>
+<pre><code><b><img src="Images/index_gr_10.gif" border="0"
+ alt="[Graphics:Images/index_gr_10.gif]" hspace="55" width="967"
+ height="48" align="middle"></b></code></pre>
+<p> Osservando che lo scostamento <img src="Images/index_gr_11.gif"
+ border="0" alt="[Graphics:Images/index_gr_11.gif]" width="16"
+ height="19" align="middle"> calcolato per l'intero 1 (intervallo che
+intercorre tra una nota e l'altra) &egrave; pari a <img
+ src="Images/index_gr_12.gif" border="0"
+ alt="[Graphics:Images/index_gr_12.gif]" width="18" height="17"
+ align="middle"> </p>
+<pre><code><b><img src="Images/index_gr_13.gif" border="0"
+ alt="[Graphics:Images/index_gr_13.gif]" hspace="55" width="967"
+ height="35" align="middle"></b></code></pre>
+<pre><samp><img src="Images/index_gr_14.gif" border="0"
+ alt="[Graphics:Images/index_gr_14.gif]" hspace="55" width="971"
+ height="34" align="middle"></samp></pre>
+<p> allora sar&agrave; utile considerare al posto di <img
+ src="Images/index_gr_15.gif" border="0"
+ alt="[Graphics:Images/index_gr_15.gif]" width="15" height="17"
+ align="middle"> il valore <img src="Images/index_gr_16.gif" border="0"
+ alt="[Graphics:Images/index_gr_16.gif]" width="16" height="19"
+ align="middle">/<img src="Images/index_gr_17.gif" border="0"
+ alt="[Graphics:Images/index_gr_17.gif]" width="18" height="17"
+ align="middle">.<br>
+Chiamiamo con <img src="Images/index_gr_18.gif" border="0"
+ alt="[Graphics:Images/index_gr_18.gif]" width="9" height="17"
+ align="middle"> questo valore e lo introduciamo nella settima colonna. </p>
+<pre><code><b><img src="Images/index_gr_19.gif" border="0"
+ alt="[Graphics:Images/index_gr_19.gif]" hspace="55" width="972"
+ height="172" align="middle"></b></code></pre>
+<table>
+  <tbody>
+    <tr>
+      <td> <samp><samp>a</samp></samp> </td>
+      <td> <samp><samp>distance</samp></samp> </td>
+      <td> <samp><samp>oct</samp></samp> </td>
+      <td> <samp><samp>note</samp></samp> </td>
+      <td> <img src="Images/index_gr_20.gif" border="0"
+ alt="[Graphics:Images/index_gr_20.gif]" width="32" height="17"
+ align="middle"> </td>
+      <td> <img src="Images/index_gr_21.gif" border="0"
+ alt="[Graphics:Images/index_gr_21.gif]" width="17" height="17"
+ align="middle"> </td>
+      <td> <samp><samp>&#949;</samp></samp> </td>
+    </tr>
+    <tr>
+      <td> <samp><samp>1.`</samp></samp> </td>
+      <td> <samp><samp>0</samp></samp> </td>
+      <td> <samp><samp>0</samp></samp> </td>
+      <td> <samp><samp>0</samp></samp> </td>
+      <td> <samp><samp>0</samp></samp> </td>
+      <td> <samp><samp>0</samp></samp> </td>
+      <td> <samp><samp>0</samp></samp> </td>
+    </tr>
+    <tr>
+      <td> <samp><samp>1.5`</samp></samp> </td>
+      <td> <samp><samp>7.01955000865387379`</samp></samp> </td>
+      <td> <samp><samp>0</samp></samp> </td>
+      <td> <samp><samp>7.01955000865387379`</samp></samp> </td>
+      <td> <samp><samp>7.`</samp></samp> </td>
+      <td> <samp><samp>0.019550008653873796`</samp></samp> </td>
+      <td> <samp><samp>0.0190015443982531238`</samp></samp> </td>
+    </tr>
+    <tr>
+      <td> <samp><samp>2.`</samp></samp> </td>
+      <td> <samp><samp>11.9999999999999996`</samp></samp> </td>
+      <td> <samp><samp>1.`</samp></samp> </td>
+      <td> <samp><samp>0</samp></samp> </td>
+      <td> <samp><samp>0</samp></samp> </td>
+      <td> <samp><samp>0</samp></samp> </td>
+      <td> <samp><samp>0</samp></samp> </td>
+    </tr>
+    <tr>
+      <td> <samp><samp>2.5`</samp></samp> </td>
+      <td> <samp><samp>15.8631371386483461`</samp></samp> </td>
+      <td> <samp><samp>1.`</samp></samp> </td>
+      <td> <samp><samp>3.86313713864834618`</samp></samp> </td>
+      <td> <samp><samp>4.`</samp></samp> </td>
+      <td> <samp><samp>0.136862861351653819`</samp></samp> </td>
+      <td> <samp><samp>0.133475057115958173`</samp></samp> </td>
+    </tr>
+    <tr>
+      <td> <samp><samp>3.`</samp></samp> </td>
+      <td> <samp><samp>19.0195500086538729`</samp></samp> </td>
+      <td> <samp><samp>1.`</samp></samp> </td>
+      <td> <samp><samp>7.0195500086538729`</samp></samp> </td>
+      <td> <samp><samp>7.`</samp></samp> </td>
+      <td> <samp><samp>0.0195500086538729078`</samp></samp> </td>
+      <td> <samp><samp>0.0190015443982531238`</samp></samp> </td>
+    </tr>
+    <tr>
+      <td> <samp><samp>3.5`</samp></samp> </td>
+      <td> <samp><samp>21.6882590646912465`</samp></samp> </td>
+      <td> <samp><samp>1.`</samp></samp> </td>
+      <td> <samp><samp>9.68825906469124831`</samp></samp> </td>
+      <td> <samp><samp>10.`</samp></samp> </td>
+      <td> <samp><samp>0.311740935308751687`</samp></samp> </td>
+      <td> <samp><samp>0.305567071218499863`</samp></samp> </td>
+    </tr>
+    <tr>
+      <td> <samp><samp>4.`</samp></samp> </td>
+      <td> <samp><samp>23.9999999999999991`</samp></samp> </td>
+      <td> <samp><samp>2.`</samp></samp> </td>
+      <td> <samp><samp>0</samp></samp> </td>
+      <td> <samp><samp>0</samp></samp> </td>
+      <td> <samp><samp>0</samp></samp> </td>
+      <td> <samp><samp>0</samp></samp> </td>
+    </tr>
+    <tr>
+      <td> <samp><samp>4.5`</samp></samp> </td>
+      <td> <samp><samp>26.0391000173077458`</samp></samp> </td>
+      <td> <samp><samp>2.`</samp></samp> </td>
+      <td> <samp><samp>2.03910001730774581`</samp></samp> </td>
+      <td> <samp><samp>2.`</samp></samp> </td>
+      <td> <samp><samp>0.0391000173077458157`</samp></samp> </td>
+      <td> <samp><samp>0.0380245584634331947`</samp></samp> </td>
+    </tr>
+    <tr>
+      <td> <samp><samp>5.`</samp></samp> </td>
+      <td> <samp><samp>27.8631371386483461`</samp></samp> </td>
+      <td> <samp><samp>2.`</samp></samp> </td>
+      <td> <samp><samp>3.8631371386483444`</samp></samp> </td>
+      <td> <samp><samp>4.`</samp></samp> </td>
+      <td> <samp><samp>0.136862861351655595`</samp></samp> </td>
+      <td> <samp><samp>0.133475057115961925`</samp></samp> </td>
+    </tr>
+    <tr>
+      <td> <samp><samp>5.5`</samp></samp> </td>
+      <td> <samp><samp>29.5131794236475641`</samp></samp> </td>
+      <td> <samp><samp>2.`</samp></samp> </td>
+      <td> <samp><samp>5.51317942364756419`</samp></samp> </td>
+      <td> <samp><samp>6.`</samp></samp> </td>
+      <td> <samp><samp>0.486820576352435807`</samp></samp> </td>
+      <td> <samp><samp>0.47960764168846186`</samp></samp> </td>
+    </tr>
+    <tr>
+      <td> <samp><samp>6.`</samp></samp> </td>
+      <td> <samp><samp>31.0195500086538711`</samp></samp> </td>
+      <td> <samp><samp>2.`</samp></samp> </td>
+      <td> <samp><samp>7.01955000865386935`</samp></samp> </td>
+      <td> <samp><samp>7.`</samp></samp> </td>
+      <td> <samp><samp>0.0195500086538693551`</samp></samp> </td>
+      <td> <samp><samp>0.0190015443982493899`</samp></samp> </td>
+    </tr>
+    <tr>
+      <td> <samp><samp>6.5`</samp></samp> </td>
+      <td> <samp><samp>32.4052766176930973`</samp></samp> </td>
+      <td> <samp><samp>2.`</samp></samp> </td>
+      <td> <samp><samp>8.4052766176930973`</samp></samp> </td>
+      <td> <samp><samp>8.`</samp></samp> </td>
+      <td> <samp><samp>0.405276617693097307`</samp></samp> </td>
+      <td> <samp><samp>0.398328632150665171`</samp></samp> </td>
+    </tr>
+    <tr>
+      <td> <samp><samp>7.`</samp></samp> </td>
+      <td> <samp><samp>33.6882590646912438`</samp></samp> </td>
+      <td> <samp><samp>2.`</samp></samp> </td>
+      <td> <samp><samp>9.68825906469124475`</samp></samp> </td>
+      <td> <samp><samp>10.`</samp></samp> </td>
+      <td> <samp><samp>0.31174093530875524`</samp></samp> </td>
+      <td> <samp><samp>0.305567071218503638`</samp></samp> </td>
+    </tr>
+    <tr>
+      <td> <samp><samp>7.5`</samp></samp> </td>
+      <td> <samp><samp>34.8826871473022137`</samp></samp> </td>
+      <td> <samp><samp>2.`</samp></samp> </td>
+      <td> <samp><samp>10.8826871473022146`</samp></samp> </td>
+      <td> <samp><samp>11.0000000000000008`</samp></samp> </td>
+      <td> <samp><samp>0.11731285269778624`</samp></samp> </td>
+      <td> <samp><samp>0.114344316146585289`</samp></samp> </td>
+    </tr>
+    <tr>
+      <td> <samp><samp>8.`</samp></samp> </td>
+      <td> <samp><samp>36.0000000000000008`</samp></samp> </td>
+      <td> <samp><samp>3.`</samp></samp> </td>
+      <td> <samp><samp>0</samp></samp> </td>
+      <td> <samp><samp>0</samp></samp> </td>
+      <td> <samp><samp>0</samp></samp> </td>
+      <td> <samp><samp>0</samp></samp> </td>
+    </tr>
+    <tr>
+      <td> <samp><samp>8.5`</samp></samp> </td>
+      <td> <samp><samp>37.0495540950040691`</samp></samp> </td>
+      <td> <samp><samp>3.`</samp></samp> </td>
+      <td> <samp><samp>1.04955409500406915`</samp></samp> </td>
+      <td> <samp><samp>1.`</samp></samp> </td>
+      <td> <samp><samp>0.0495540950040691541`</samp></samp> </td>
+      <td> <samp><samp>0.0482056518448074555`</samp></samp> </td>
+    </tr>
+    <tr>
+      <td> <samp><samp>9.`</samp></samp> </td>
+      <td> <samp><samp>38.0391000173077475`</samp></samp> </td>
+      <td> <samp><samp>3.`</samp></samp> </td>
+      <td> <samp><samp>2.03910001730774581`</samp></samp> </td>
+      <td> <samp><samp>2.`</samp></samp> </td>
+      <td> <samp><samp>0.0391000173077458157`</samp></samp> </td>
+      <td> <samp><samp>0.0380245584634331947`</samp></samp> </td>
+    </tr>
+    <tr>
+      <td> <samp><samp>9.5`</samp></samp> </td>
+      <td> <samp><samp>38.9751301613230225`</samp></samp> </td>
+      <td> <samp><samp>3.`</samp></samp> </td>
+      <td> <samp><samp>2.97513016132302254`</samp></samp> </td>
+      <td> <samp><samp>3.`</samp></samp> </td>
+      <td> <samp><samp>0.0248698386769774515`</samp></samp> </td>
+      <td> <samp><samp>0.024175844599023244`</samp></samp> </td>
+    </tr>
+    <tr>
+      <td> <samp><samp>10.`</samp></samp> </td>
+      <td> <samp><samp>39.8631371386483479`</samp></samp> </td>
+      <td> <samp><samp>3.`</samp></samp> </td>
+      <td> <samp><samp>3.86313713864834795`</samp></samp> </td>
+      <td> <samp><samp>4.`</samp></samp> </td>
+      <td> <samp><samp>0.136862861351652043`</samp></samp> </td>
+      <td> <samp><samp>0.133475057115958173`</samp></samp> </td>
+    </tr>
+    <tr>
+      <td> <samp><samp>10.5000000000000004`</samp></samp> </td>
+      <td> <samp><samp>40.7078090733451158`</samp></samp> </td>
+      <td> <samp><samp>3.`</samp></samp> </td>
+      <td> <samp><samp>4.70780907334511766`</samp></samp> </td>
+      <td> <samp><samp>5.`</samp></samp> </td>
+      <td> <samp><samp>0.292190926654882332`</samp></samp> </td>
+      <td> <samp><samp>0.286242104549119211`</samp></samp> </td>
+    </tr>
+    <tr>
+      <td> <samp><samp>11.0000000000000008`</samp></samp> </td>
+      <td> <samp><samp>41.5131794236475659`</samp></samp> </td>
+      <td> <samp><samp>3.`</samp></samp> </td>
+      <td> <samp><samp>5.51317942364756419`</samp></samp> </td>
+      <td> <samp><samp>6.`</samp></samp> </td>
+      <td> <samp><samp>0.486820576352435807`</samp></samp> </td>
+      <td> <samp><samp>0.47960764168846186`</samp></samp> </td>
+    </tr>
+    <tr>
+      <td> <samp><samp>11.4999999999999991`</samp></samp> </td>
+      <td> <samp><samp>42.2827434726841477`</samp></samp> </td>
+      <td> <samp><samp>3.`</samp></samp> </td>
+      <td> <samp><samp>6.28274347268414601`</samp></samp> </td>
+      <td> <samp><samp>6.`</samp></samp> </td>
+      <td> <samp><samp>0.282743472684146013`</samp></samp> </td>
+      <td> <samp><samp>0.276911219186958401`</samp></samp> </td>
+    </tr>
+    <tr>
+      <td> <samp><samp>11.9999999999999996`</samp></samp> </td>
+      <td> <samp><samp>43.0195500086538729`</samp></samp> </td>
+      <td> <samp><samp>3.`</samp></samp> </td>
+      <td> <samp><samp>7.0195500086538729`</samp></samp> </td>
+      <td> <samp><samp>7.`</samp></samp> </td>
+      <td> <samp><samp>0.0195500086538729078`</samp></samp> </td>
+      <td> <samp><samp>0.0190015443982531238`</samp></samp> </td>
+    </tr>
+  </tbody>
+</table>
+<hr> <font face="Helvetica, Arial" size="1">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;October 6, 2003</font><!-- // *** Barra di navigazione - inizio *** // -->
+<hr align="center" width="100%">
+<center>
+<table class="navbar">
+  <tbody>
+    <tr>
+      <td><a href="../../index.html">HOME</a></td>
+      <td><a href="../../Personal/personal.html">PERSONAL</a></td>
+      <td><a href="../../Projects/projects.html">PROJECTS</a></td>
+      <td>LINKS</td>
+      <td><a href="mailto:eziogale@libero.it">E-MAIL</a></td>
+    </tr>
+  </tbody>
+</table>
+</center>
+<hr align="center" width="100%"><!-- // *** Barra di navigazione - fine *** // -->
+</body>
+</html>
