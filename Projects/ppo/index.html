@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+        "HTMLFiles/xhtml-math11-f.dtd">
+
+<!-- Created with the Wolfram Language : www.wolfram.com -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>
+  PPOdoc
+ </title>
+ <link href="HTMLFiles/PPOdoc.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<p class="Section">
+ Proximal policy optimization (PPO)
+</p>
+
+
+
+<p class="Input">
+ <img src="HTMLFiles/PPOdoc_1.gif" alt="PPOdoc_1.gif" width="54" height="12" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/PPOdoc_2.gif" alt="PPOdoc_2.gif" width="156" height="26" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/PPOdoc_3.gif" alt="PPOdoc_3.gif" width="16" height="12" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/PPOdoc_4.gif" alt="PPOdoc_4.gif" width="11" height="12" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/PPOdoc_5.gif" alt="PPOdoc_5.gif" width="170" height="12" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/PPOdoc_6.gif" alt="PPOdoc_6.gif" width="399" height="168" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/PPOdoc_7.gif" alt="PPOdoc_7.gif" width="561" height="154" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/PPOdoc_8.gif" alt="PPOdoc_8.gif" width="360" height="183" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/PPOdoc_9.gif" alt="PPOdoc_9.gif" width="900" height="325" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/PPOdoc_10.gif" alt="PPOdoc_10.gif" width="124" height="12" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/PPOdoc_11.gif" alt="PPOdoc_11.gif" width="445" height="346" style="vertical-align:middle;" usemap="#map_11" />
+<map name="map_11">
+<area shape="rect" coords="92,329,118,320" title="-Graphics-   path:    {Output}" nohref="" />
+<area shape="rect" coords="92,317,120,308" title="-Graphics-   path:    {entropy}" nohref="" />
+<area shape="rect" coords="92,291,131,281" title="-Graphics-   path:    {Advantage}" nohref="" />
+<area shape="rect" coords="92,277,122,269" title="-Graphics-   path:    {OldProb}" nohref="" />
+<area shape="rect" coords="92,265,125,258" title="-Graphics-   path:    {NewProb}" nohref="" />
+<area shape="rect" coords="92,254,116,245" title="-Graphics-   path:    {Target}" nohref="" />
+<area shape="rect" coords="405,87,409,83" title="Output" nohref="" />
+<area shape="rect" coords="364,27,367,23" title="entropy" nohref="" />
+<area shape="rect" coords="311,39,338,12" title="negentropy
+ElementwiseLayer" nohref="" />
+<area shape="rect" coords="352,99,379,72" title="totalloss
+TotalLayer" nohref="" />
+<area shape="rect" coords="311,99,338,72" title="neg
+ElementwiseLayer" nohref="" />
+<area shape="rect" coords="269,39,296,12" title="sumentropy
+SummationLayer" nohref="" />
+<area shape="rect" coords="269,99,296,72" title="min
+ThreadingLayer" nohref="" />
+<area shape="rect" coords="187,218,214,191" title="clipr
+ElementwiseLayer" nohref="" />
+<area shape="rect" coords="228,39,255,12" title="entropy
+ElementwiseLayer" nohref="" />
+<area shape="rect" coords="199,27,202,23" title="Target" nohref="" />
+<area shape="rect" coords="116,87,120,83" title="OldProb" nohref="" />
+<area shape="rect" coords="146,98,173,71" title="ratio
+ThreadingLayer" nohref="" />
+<area shape="rect" coords="116,147,120,143" title="NewProb" nohref="" />
+<area shape="rect" coords="228,99,255,72" title="ratioA
+ThreadingLayer" nohref="" />
+<area shape="rect" coords="228,159,255,132" title="cliprA
+ThreadingLayer" nohref="" />
+<area shape="rect" coords="199,147,202,143" title="Advantage" nohref="" />
+<area shape="rect" coords="383,89,390,81" title="         real
+Output-Graphics-Output" nohref="" />
+<area shape="rect" coords="300,29,308,21" title="        real
+Output-Graphics-Input" nohref="" />
+<area shape="rect" coords="259,89,267,81" title="         real
+Output-Graphics-Input1" nohref="" />
+<area shape="rect" coords="199,89,206,81" title="         real
+Output-Graphics-Input2" nohref="" />
+<area shape="rect" coords="176,154,186,144" title="        real
+Output-Graphics-Input" nohref="" />
+<area shape="rect" coords="341,62,351,51" title="         real
+Output-Graphics-Input2" nohref="" />
+<area shape="rect" coords="342,29,349,21" title="         real
+Output-Graphics-entropy" nohref="" />
+<area shape="rect" coords="342,89,349,81" title="         real
+Output-Graphics-Input1" nohref="" />
+<area shape="rect" coords="300,89,308,81" title="        real
+Output-Graphics-Input" nohref="" />
+<area shape="rect" coords="259,29,267,21" title="vector ( 
+size: 192 
+)
+Output-Graphics-Input" nohref="" />
+<area shape="rect" coords="258,119,269,108" title="         real
+Output-Graphics-Input2" nohref="" />
+<area shape="rect" coords="217,179,227,168" title="         real
+Output-Graphics-Input1" nohref="" />
+<area shape="rect" coords="218,29,225,21" title="vector ( 
+size: 192 
+)
+Target-Graphics-Input" nohref="" />
+<area shape="rect" coords="135,89,143,81" title="         real
+OldProb-Graphics-Input2" nohref="" />
+<area shape="rect" coords="135,119,145,108" title="         real
+NewProb-Graphics-Input1" nohref="" />
+<area shape="rect" coords="217,119,227,108" title="          real
+Advantage-Graphics-Input1" nohref="" />
+<area shape="rect" coords="218,149,225,141" title="          real
+Advantage-Graphics-Input2" nohref="" />
+<area shape="rect" coords="365,86,407,84" title="         real
+Output-Graphics-Output" nohref="" />
+<area shape="rect" coords="282,26,325,24" title="        real
+Output-Graphics-Input" nohref="" />
+<area shape="rect" coords="241,86,283,84" title="         real
+Output-Graphics-Input1" nohref="" />
+<area shape="rect" coords="158,86,243,84" title="         real
+Output-Graphics-Input2" nohref="" />
+<area shape="rect" coords="159,206,201,84" title="        real
+Output-Graphics-Input" nohref="" />
+<area shape="rect" coords="324,86,366,24" title="         real
+Output-Graphics-Input2" nohref="" />
+<area shape="rect" coords="324,26,366,24" title="         real
+Output-Graphics-entropy" nohref="" />
+<area shape="rect" coords="324,86,366,84" title="         real
+Output-Graphics-Input1" nohref="" />
+<area shape="rect" coords="282,86,325,84" title="        real
+Output-Graphics-Input" nohref="" />
+<area shape="rect" coords="241,26,283,24" title="vector ( 
+size: 192 
+)
+Output-Graphics-Input" nohref="" />
+<area shape="rect" coords="241,146,283,84" title="         real
+Output-Graphics-Input2" nohref="" />
+<area shape="rect" coords="200,206,242,144" title="         real
+Output-Graphics-Input1" nohref="" />
+<area shape="rect" coords="200,26,242,24" title="vector ( 
+size: 192 
+)
+Target-Graphics-Input" nohref="" />
+<area shape="rect" coords="117,86,160,84" title="         real
+OldProb-Graphics-Input2" nohref="" />
+<area shape="rect" coords="117,146,160,84" title="         real
+NewProb-Graphics-Input1" nohref="" />
+<area shape="rect" coords="200,146,242,84" title="          real
+Advantage-Graphics-Input1" nohref="" />
+<area shape="rect" coords="200,146,242,144" title="          real
+Advantage-Graphics-Input2" nohref="" />
+</map>
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/PPOdoc_12.gif" alt="PPOdoc_12.gif" width="424" height="211" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/PPOdoc_13.gif" alt="PPOdoc_13.gif" width="461" height="12" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/PPOdoc_14.gif" alt="PPOdoc_14.gif" width="968" height="40" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/PPOdoc_15.gif" alt="PPOdoc_15.gif" width="273" height="111" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/PPOdoc_16.gif" alt="PPOdoc_16.gif" width="429" height="12" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/PPOdoc_17.gif" alt="PPOdoc_17.gif" width="279" height="111" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/PPOdoc_18.gif" alt="PPOdoc_18.gif" width="606" height="26" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/PPOdoc_19.gif" alt="PPOdoc_19.gif" width="477" height="111" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/PPOdoc_20.gif" alt="PPOdoc_20.gif" width="472" height="154" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/PPOdoc_21.gif" alt="PPOdoc_21.gif" width="602" height="346" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/PPOdoc_22.gif" alt="PPOdoc_22.gif" width="103" height="26" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/PPOdoc_23.gif" alt="PPOdoc_23.gif" width="16" height="12" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/PPOdoc_24.gif" alt="PPOdoc_24.gif" width="848" height="325" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/PPOdoc_25.gif" alt="PPOdoc_25.gif" width="363" height="688" style="vertical-align:middle;" usemap="#map_25" />
+<map name="map_25">
+<area shape="rect" coords="92,671,118,662" title="-Graphics-   path:    {2, Output}" nohref="" />
+<area shape="rect" coords="92,645,112,636" title="-Graphics-   path:    {2, Input}" nohref="" />
+<area shape="rect" coords="92,632,116,624" title="-Graphics-   path:    {2, Action}" nohref="" />
+<area shape="rect" coords="92,620,122,612" title="-Graphics-   path:    {2, OldProb}" nohref="" />
+<area shape="rect" coords="92,609,131,600" title="-Graphics-   path:    {2, Advantage}" nohref="" />
+<area shape="rect" coords="187,453,214,426" title="softmax
+SoftmaxLayer" nohref="" />
+<area shape="rect" coords="322,501,326,498" title="Output" nohref="" />
+<area shape="rect" coords="240,501,244,498" title="OldProb" nohref="" />
+<area shape="rect" coords="146,453,173,426" title="policynet
+NetChain" nohref="" />
+<area shape="rect" coords="116,441,120,438" title="Input" nohref="" />
+<area shape="rect" coords="269,513,296,486" title="policyloss
+NetGraph" nohref="" />
+<area shape="rect" coords="240,561,244,558" title="Advantage" nohref="" />
+<area shape="rect" coords="228,453,255,426" title="extract
+ExtractLayer" nohref="" />
+<area shape="rect" coords="199,501,202,498" title="Action" nohref="" />
+<area shape="rect" coords="218,443,225,436" title="vector ( 
+size: 192 
+)
+Output-Graphics-Input" nohref="" />
+<area shape="rect" coords="177,443,184,436" title="vector ( 
+size: 192 
+)
+Output-Graphics-Input" nohref="" />
+<area shape="rect" coords="300,503,308,496" title="         real
+Output-Graphics-Output" nohref="" />
+<area shape="rect" coords="258,476,269,466" title="         real
+Output-Graphics-NewProb" nohref="" />
+<area shape="rect" coords="259,503,267,496" title="          real
+OldProb-Graphics-OldProb" nohref="" />
+<area shape="rect" coords="135,443,143,436" title="array ( 
+size: 4󭅅2 
+)
+ Input-Graphics-Input" nohref="" />
+<area shape="rect" coords="258,533,269,523" title="            real
+Advantage-Graphics-Advantage" nohref="" />
+<area shape="rect" coords="217,473,227,463" title="        integer
+Action-Graphics-Position" nohref="" />
+<area shape="rect" coords="200,440,242,439" title="vector ( 
+size: 192 
+)
+Output-Graphics-Input" nohref="" />
+<area shape="rect" coords="159,440,201,439" title="vector ( 
+size: 192 
+)
+Output-Graphics-Input" nohref="" />
+<area shape="rect" coords="282,500,325,499" title="         real
+Output-Graphics-Output" nohref="" />
+<area shape="rect" coords="241,500,283,439" title="         real
+Output-Graphics-NewProb" nohref="" />
+<area shape="rect" coords="241,500,283,499" title="          real
+OldProb-Graphics-OldProb" nohref="" />
+<area shape="rect" coords="117,440,160,439" title="array ( 
+size: 4󭅅2 
+)
+ Input-Graphics-Input" nohref="" />
+<area shape="rect" coords="241,560,283,499" title="            real
+Advantage-Graphics-Advantage" nohref="" />
+<area shape="rect" coords="200,500,242,439" title="        integer
+Action-Graphics-Position" nohref="" />
+<area shape="rect" coords="92,415,140,406" title="-Graphics-   path:    {2}" nohref="" />
+<area shape="rect" coords="92,402,129,392" title="-Graphics-   path:    {PolicyLoss}" nohref="" />
+<area shape="rect" coords="92,388,128,380" title="-Graphics-   path:    {ValueLoss}" nohref="" />
+<area shape="rect" coords="92,363,136,354" title="-Graphics-   path:    {valueOutput}" nohref="" />
+<area shape="rect" coords="92,350,112,341" title="-Graphics-   path:    {Input}" nohref="" />
+<area shape="rect" coords="92,337,116,330" title="-Graphics-   path:    {Action}" nohref="" />
+<area shape="rect" coords="92,326,122,318" title="-Graphics-   path:    {OldProb}" nohref="" />
+<area shape="rect" coords="92,315,131,305" title="-Graphics-   path:    {Advantage}" nohref="" />
+<area shape="rect" coords="199,87,203,83" title="PolicyLoss" nohref="" />
+<area shape="rect" coords="199,267,203,263" title="ValueLoss" nohref="" />
+<area shape="rect" coords="116,267,120,263" title="valueOutput" nohref="" />
+<area shape="rect" coords="116,27,120,23" title="OldProb" nohref="" />
+<area shape="rect" coords="146,279,173,252" title="1
+NetGraph" nohref="" />
+<area shape="rect" coords="116,207,120,203" title="Input" nohref="" />
+<area shape="rect" coords="116,87,120,83" title="Advantage" nohref="" />
+<area shape="rect" coords="146,99,173,72" title="2
+NetGraph" nohref="" />
+<area shape="rect" coords="116,147,120,143" title="Action" nohref="" />
+<area shape="rect" coords="177,89,184,81" title="           real
+Output-Graphics-PolicyLoss" nohref="" />
+<area shape="rect" coords="177,269,184,261" title="            real
+ValueLoss-Graphics-ValueLoss" nohref="" />
+<area shape="rect" coords="136,269,143,261" title="              real
+valueOutput-Graphics-valueOutput" nohref="" />
+<area shape="rect" coords="135,62,145,51" title="          real
+OldProb-Graphics-OldProb" nohref="" />
+<area shape="rect" coords="136,146,145,136" title="array ( 
+size: 4󭅅2 
+)
+ Input-Graphics-Input" nohref="" />
+<area shape="rect" coords="135,242,145,231" title="array ( 
+size: 4󭅅2 
+)
+ Input-Graphics-Input" nohref="" />
+<area shape="rect" coords="136,89,143,81" title="            real
+Advantage-Graphics-Advantage" nohref="" />
+<area shape="rect" coords="135,119,145,108" title="       integer
+Action-Graphics-Action" nohref="" />
+<area shape="rect" coords="159,86,201,84" title="           real
+Output-Graphics-PolicyLoss" nohref="" />
+<area shape="rect" coords="159,266,201,264" title="            real
+ValueLoss-Graphics-ValueLoss" nohref="" />
+<area shape="rect" coords="118,266,160,264" title="              real
+valueOutput-Graphics-valueOutput" nohref="" />
+<area shape="rect" coords="118,86,160,24" title="          real
+OldProb-Graphics-OldProb" nohref="" />
+<area shape="rect" coords="118,206,160,84" title="array ( 
+size: 4󭅅2 
+)
+ Input-Graphics-Input" nohref="" />
+<area shape="rect" coords="118,266,160,204" title="array ( 
+size: 4󭅅2 
+)
+ Input-Graphics-Input" nohref="" />
+<area shape="rect" coords="118,86,160,84" title="            real
+Advantage-Graphics-Advantage" nohref="" />
+<area shape="rect" coords="118,146,160,84" title="       integer
+Action-Graphics-Action" nohref="" />
+<area shape="rect" coords="99,282,138,274" title="valueOutput" nohref="" />
+</map>
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/PPOdoc_26.gif" alt="PPOdoc_26.gif" width="356" height="12" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/PPOdoc_27.gif" alt="PPOdoc_27.gif" width="580" height="268" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/PPOdoc_28.gif" alt="PPOdoc_28.gif" width="536" height="97" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/PPOdoc_29.gif" alt="PPOdoc_29.gif" width="48" height="12" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/PPOdoc_30.gif" alt="PPOdoc_30.gif" width="291" height="12" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/PPOdoc_31.gif" alt="PPOdoc_31.gif" width="70" height="12" style="vertical-align:middle" />
+</p>
+
+<p class="Output">
+ <img src="HTMLFiles/PPOdoc_32.gif" alt="PPOdoc_32.gif" width="610" height="99" style="vertical-align:middle" />
+</p>
+
+<p class="Input">
+ <img src="HTMLFiles/PPOdoc_33.gif" alt="PPOdoc_33.gif" width="953" height="655" style="vertical-align:middle" />
+</p>
+
+<table class='Output'>
+ <tr style='vertical-align: baseline;'>
+  <td style='text-align: center;'><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span><span>
