@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>contascatti.nb</title>
+  <link href="../../css/common.css" rel="stylesheet" type="text/css">
+</head>
+<body style="background-color: rgb(255, 255, 255);">
+<!-- // *** Barra di navigazione - inizio *** // -->
+<hr align="center" width="100%">
+<center>
+<table class="navbar">
+  <tbody>
+    <tr>
+      <td><a href="../../index.html">HOME</a></td>
+      <td><a href="../../Personal/personal.html">PERSONAL</a></td>
+      <td><a href="../../Projects/projects.html">PROJECTS</a></td>
+      <td>LINKS</td>
+      <td><a href="mailto:eziogale@libero.it">E-MAIL</a></td>
+    </tr>
+  </tbody>
+</table>
+</center>
+<hr align="center" width="100%"><!-- // *** Barra di navigazione - fine *** // -->
+<h1> Contascatti telefonico </h1>
+<p> Esaminando lo schema elettrico da sinistra verso destra abbiamo il
+primo&nbsp;&nbsp;stadio di accoppiamento . <br>
+La linea telefonica ,rappresentata dal generatore Vsignal che simula il
+segnale a 12kHz (ampiezza 2V rms), &egrave; isolata dagli altri stadi
+del circuito alimentati da un qualsiasi generatore da&nbsp;&nbsp;5 - 12
+V e potenza adeguata per pilotare qualsiasi utilizzatore del segnale
+generato.<br>
+La scelta di un filtro LC serie ( del I ordine ) si &egrave; rivelata
+sufficiente ad attenuare tutti gli altri segnali presenti sulla linea:
+la banda audio (300-4kHz, 2 V rms) e lo squillo ( 25Hz, 120 V).<br>
+Un segnale di disturbo inaspettato &eacute; generato quando si alza la
+cornetta di un telefono che utilizza interruttori meccanici. Quando si
+alza il telefono la tensione della linea cala da 50 V a 12V circa in un
+tempo brevissimo, questo gradino genera un segnale che pu&ograve; essere
+erroneamente conteggiato dal rilevatore. Non &eacute; da escludere
+inoltre che la cornetta venga alzata mentre sulla linea &eacute;
+presente il picco del segnale dello squillo; il gradino sarebbe in
+questo caso di oltre 100 V ( o molto pi&ugrave; a causa di carichi
+reattivi da attribuire principalmente alle suonerie ).<br>
+Il segnale filtrato raggiunge i led contenuti nei due fotoaccoppiatori
+siglati U2 e U3 e viene trasferito, amplificato e raddrizzato dai due
+transistor.<br>
+Il segnale spurio provocato dai contatti meccanici &eacute; l' unico
+disturbo che potrebbe presentarsi sugli emettitori dei transistor; ma
+&eacute; di durata molto breve ( rispetto a quella del segnale a 12kHz
+di .1 sec circa ) e viene allora filtrato dal D1, R10 e C2, che
+provvedono inoltre a livellare il segnale buono. L' operazionale siglato
+U1 &eacute; un comparatore co isteresi che commuta dallo stato alto a
+quello basso quando il segnale al suo ingresso invertente supera 2/3
+Vcc e torna allo stato di riposo quando scende sotto 1/3 Vcc.<br>
+</p>
+<h3> CS35: SCHEMA ELETTRICO </h3>
+<p> <img src="Images/index_gr_1.gif" border="0"
+ alt="[Graphics:Images/index_gr_1.gif]" hspace="4" width="998"
+ height="369" align="middle"></p>
+<h3> NOTE </h3>
+<p> R9 pu&ograve; essere aumentata ma il filtro diventa meno selettivo.<br>
+Per R1, R2, R3 si pu&ograve; scegliere il valore di 10k-100k Ohom, o
+pu&ograve; essere aumentato per limitare la potenza dissipata;Nei
+fotoaccoppiatori le basi dei transistror sono flottanti.<br>
+R10 e C2 sono dimensionati in modo tale che passi un segnale di durata
+non inferiore a t = R C ln ( k ) , con la soglia del comparatore fissata
+a k * Vcc.<br>
+</p>
+<!-- // *** Barra di navigazione - inizio *** // -->
+<hr align="center" width="100%">
+<center>
+<table class="navbar">
+  <tbody>
+    <tr>
+      <td><a href="../../index.html">HOME</a></td>
+      <td><a href="../../Personal/personal.html">PERSONAL</a></td>
+      <td><a href="../../Projects/projects.html">PROJECTS</a></td>
+      <td>LINKS</td>
+      <td><a href="mailto:eziogale@libero.it">E-MAIL</a></td>
+    </tr>
+  </tbody>
+</table>
+</center>
+<hr align="center" width="100%"><!-- // *** Barra di navigazione - fine *** // -->
+</body>
+</html>
