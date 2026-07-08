@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>
+  spice12
+ </title>
+ <link href="HTMLFiles/Default.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<p class="Title">
+ SPICE
+</p>
+<p class="Text">
+ Il modello del BJT &egrave; stato tratto da circa 10 fonti diverse (il manuale di PSpice si &egrave; rivelato corretto).<br />La funzione HFE funzione delle 2 tensioni ha mostrato un massimo tendente a infinito, si sono introdotte allora delle condizioni al contorno.
+</p>
+<p class="Graphics">
+ <img src='HTMLFiles/spice12_1.gif' alt='"spice12_1.gif"' width='470' height='309' style='vertical-align:middle' />
+</p>
+<p class="Subtitle">
+ Introduzione
+</p>
+<p class="Text">
+ Utilizzando i modelli e le librerie di Spice, si vuole determinare il punto di lavoro ottimale dei bjt usati come amplificatori.<br />Nella realizzazione di amplificatori a transistor &egrave; indispensabile ottimizzare i parametri per massimizzare il guadagno ai piccoli segnali.
+</p>
+<p class="Text">
+ Consideriamo per semplicit&agrave; un transistor nella connessione ad emettitore comune, affinch&egrave; lavori nella regione di massimo guadagmo occorre fissare due parametri. Questi parametri possono essere tensioni o correnti. A mio avviso trovo che sia comodo scegliere come parametri le correnti di base e di collettore.
+</p>
+<p class="Text">
+ Affinch&egrave; la simulazione abbia un riscontro pratico, &egrave; indispensabile utilizzare un certo numero di parametri di modello. Il guadagno di corrente statico <span><span><img src='HTMLFiles/spice12_2.gif' alt='"spice12_2.gif"' width='20' height='17' style='vertical-align:middle' /></span></span>=<span><span><img src='HTMLFiles/spice12_3.gif' alt='"spice12_3.gif"' width='30' height='17' style='vertical-align:middle' /></span></span>, graficato in funzione di <span><span><img src='HTMLFiles/spice12_4.gif' alt='"spice12_4.gif"' width='10' height='17' style='vertical-align:middle' /></span></span>, presenta un massimo solo se si considerano, oltre ai parametri BF (BR), IS, VAF (VAR), anche IKF, IKR, etc.<br />Pertanto si cercher&agrave; di considerare un modello il pi&ugrave; possibile raffinato, e si cercher&agrave; poi il massimo della funzione <span><span><img src='HTMLFiles/spice12_5.gif' alt='"spice12_5.gif"' width='20' height='17' style='vertical-align:middle' /></span></span> ricorrendo ad algoritmi numerici.
+</p>
+<p class="Input">
+ <img src='HTMLFiles/spice12_6.gif' alt='"spice12_6.gif"' width='459' height='13' style='vertical-align:middle' />
+</p>
+<p class="Input">
+ <img src='HTMLFiles/spice12_7.gif' alt='"spice12_7.gif"' width='330' height='13' style='vertical-align:middle' />
+</p>
+<p class="Input">
+ <img src='HTMLFiles/spice12_8.gif' alt='"spice12_8.gif"' width='1476' height='269' style='vertical-align:middle' />
+</p>
+<p class="Input">
+ <a id="Cuboid"></a>
+ <img src='HTMLFiles/spice12_9.gif' alt='"spice12_9.gif"' width='1025' height='13' style='vertical-align:middle' />
+</p>
+<p class="Input">
+ <img src='HTMLFiles/spice12_10.gif' alt='"spice12_10.gif"' width='340' height='13' style='vertical-align:middle' />
+</p>
+<p class="Input">
+ <img src='HTMLFiles/spice12_11.gif' alt='"spice12_11.gif"' width='370' height='13' style='vertical-align:middle' />
+</p>
+<p class="Output">
+ <img src='HTMLFiles/spice12_12.gif' alt='"spice12_12.gif"' width='1029' height='41' style='vertical-align:middle' />
+</p>
+<p class="Input">
+ <img src='HTMLFiles/spice12_13.gif' alt='"spice12_13.gif"' width='755' height='40' style='vertical-align:middle' />
+</p>
+<p class="Input">
+ <img src='HTMLFiles/spice12_14.gif' alt='"spice12_14.gif"' width='1043' height='159' style='vertical-align:middle' />
+</p>
+<p class="Text">
+ Limite sulla potenza max dissipata e sulle tensioni: <span><span><img src='HTMLFiles/spice12_15.gif' alt='"spice12_15.gif"' width='305' height='17' style='vertical-align:middle' /></span></span>)
+</p>
+<p class="Input">
+ <img src='HTMLFiles/spice12_16.gif' alt='"spice12_16.gif"' width='1562' height='187' style='vertical-align:middle' />
+</p>
+<p class="Output">
+ <img src='HTMLFiles/spice12_17.gif' alt='"spice12_17.gif"' width='360' height='333' style='vertical-align:middle' />
+</p>
+<p class="Input">
+ <img src='HTMLFiles/spice12_18.gif' alt='"spice12_18.gif"' width='1378' height='190' style='vertical-align:middle' />
+</p>
+<p class="Input">
+ <img src='HTMLFiles/spice12_19.gif' alt='"spice12_19.gif"' width='79' height='13' style='vertical-align:middle' />
+</p>
+<p class="Output">
+ <img src='HTMLFiles/spice12_20.gif' alt='"spice12_20.gif"' width='602' height='13' style='vertical-align:middle' />
+</p>
+<p class="Section">
+ Result
+</p>
+<p class="Text">
+ Transistor NPN equivalenti
+</p>
+<p class="Input">
+ <img src='HTMLFiles/spice12_21.gif' alt='"spice12_21.gif"' width='827' height='116' style='vertical-align:middle' />
+</p>
+<p class="Output">
+ <img src='HTMLFiles/spice12_22.gif' alt='"spice12_22.gif"' width='1324' height='116' style='vertical-align:middle' />
+</p>
+<p class="Text">
+ Prendiamo i rappresentativi di ogni raggruppamento calcoliamone l'HFE
+</p>
+<p class="Input">
+ <img src='HTMLFiles/spice12_23.gif' alt='"spice12_23.gif"' width='222' height='31' style='vertical-align:middle' />
+</p>
+<p class="Output">
+ <img src='HTMLFiles/spice12_24.gif' alt='"spice12_24.gif"' width='1358' height='2593' style='vertical-align:middle' />
+</p>
+<p class="Input">
+ <img src='HTMLFiles/spice12_25.gif' alt='"spice12_25.gif"' width='393' height='13' style='vertical-align:middle' />
+</p>
+<p class="Input">
+ <img src='HTMLFiles/spice12_26.gif' alt='"spice12_26.gif"' width='348' height='31' style='vertical-align:middle' />
+</p>
+<p class="Output">
+ <img src='HTMLFiles/spice12_27.gif' alt='"spice12_27.gif"' width='1402' height='312' style='vertical-align:middle' />
+</p>
+</body>
+</html>
